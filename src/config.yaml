@@ -44,7 +44,7 @@ apps:
 
     list:
       isEnabled: true
-      pathname: 'blog' # Blog main path, you can change this to "articles" (/articles)
+      pathname: 'events' # Blog main path, you can change this to "articles" (/articles)
       robots:
         index: true
 
@@ -69,4 +69,4 @@ analytics:
       id: null # or "G-XXXXXXXXXX"
 
 ui:
-  theme: 'system' # Values: "system" | "light" | "dark" | "light:only" | "dark:only"
+  theme: 'dark:only' # Values: "system" | "light" | "dark" | "light:only" | "dark:only"

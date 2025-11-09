@@ -247,6 +247,9 @@ To customize Font families, Colors or more Elements refer to the following files
 - `src/components/CustomStyles.astro`
 - `src/assets/styles/tailwind.css`
 
+https://fontsource.org/
+https://tabler.io/icons
+
 ### Deploy
 
 #### Deploy to production (manual)

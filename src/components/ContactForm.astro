@@ -1,0 +1,116 @@
+<section id="contact" class="w-full py-16 md:py-24 bg-[var(--charcoal)] relative">
+  <div class="relative max-w-5xl mx-auto px-6">
+    <h2 class="text-sm tracking-[.25em] uppercase text-[var(--aw-color-accent)] mb-3 shiny-sec">Let's talk</h2>
+    <h3 class="text-4xl md:text-5xl font-semibold text-[var(--white)] mb-10">Contact</h3>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-10 items-start text-[var(--white-dim)] leading-relaxed">
+      <div>
+        <p class="mb-6">
+          Have a question or project in mind? Reach out - we'd love to collaborate.
+        </p>
+      </div>
+
+      <!-- Contact Button -->
+      <div class="flex justify-start md:justify-end">
+        <button
+          id="open-contact-modal"
+          class="group relative inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl
+                 bg-gradient-to-b from-[var(--turq)] to-[var(--turq-2)]
+                 text-[var(--charcoal)] font-semibold shadow-[0_8px_28px_rgba(0,214,255,.25)]
+                 hover:shadow-[0_10px_34px_rgba(83,242,232,.35)]
+                 transition-transform hover:-translate-y-0.5 active:translate-y-0"
+        >
+          Contact Us
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Contact Modal -->
+<div
+  id="contact-modal"
+  class="fixed inset-0 z-[2000] hidden items-center bg-[var(--button-bg)] justify-center backdrop-blur-md p-4"
+  aria-hidden="true"
+>
+  <div class="relative w-full max-w-lg rounded-2xl border border-white/10 bg-[var(--ink)]/80 backdrop-blur-xl shadow-[var(--glow)] p-8">
+
+    <!-- Close Button -->
+    <button
+      id="close-contact-modal"
+      class="absolute top-4 right-4 text-[var(--white-dim)] hover:text-[var(--white)] transition"
+      aria-label="Close"
+    >✕</button>
+
+    <h3 class="text-2xl text-[var(--white)] mb-6">Send us a message</h3>
+
+    <form
+      id="contact-modal-form"
+      action="https://formspree.io/f/mnnjznkj"
+      method="POST"
+      class="flex flex-col gap-5"
+    >
+      <div class="fl-wrap">
+        <input id="m_name" type="text" name="from_name" placeholder=" " required
+          class="fl-input w-full rounded-xl bg-[var(--charcoal-2)]/80 text-[var(--white)]
+                 border border-white/10 px-4 py-3.5 outline-none focus:border-[var(--turq)]/70 focus:ring-2 focus:ring-[var(--turq)]/30"/>
+        <label for="m_name" class="fl-label px-1">Name</label>
+      </div>
+
+      <div class="fl-wrap">
+        <input id="m_email" type="email" name="reply_to" placeholder=" " required
+          class="fl-input w-full rounded-xl bg-[var(--charcoal-2)]/80 text-[var(--white)]
+                 border border-white/10 px-4 py-3.5 outline-none focus:border-[var(--turq)]/70 focus:ring-2 focus:ring-[var(--turq)]/30"/>
+        <label for="m_email" class="fl-label px-1">Email</label>
+      </div>
+
+      <div class="fl-wrap">
+        <textarea id="m_msg" name="message" rows="5" placeholder=" " required
+          class="fl-input w-full rounded-xl bg-[var(--charcoal-2)]/80 text-[var(--white)]
+                 border border-white/10 px-4 py-3.5 outline-none resize-y
+                 focus:border-[var(--turq)]/70 focus:ring-2 focus:ring-[var(--turq)]/30"></textarea>
+        <label for="m_msg" class="fl-label px-1">Message</label>
+      </div>
+
+      <button type="submit"
+        class="group relative inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl
+               bg-gradient-to-b from-[var(--turq)] to-[var(--turq-2)]
+               text-[var(--charcoal)] font-semibold shadow-[0_8px_28px_rgba(0,214,255,.25)]
+               hover:shadow-[0_10px_34px_rgba(83,242,232,.35)]
+               transition-transform hover:-translate-y-0.5 active:translate-y-0">
+        Send Message
+      </button>
+    </form>
+
+  </div>
+</div>
+<script is:inline>
+  const openBtn = document.getElementById("open-contact-modal");
+  const modal = document.getElementById("contact-modal");
+  const closeBtn = document.getElementById("close-contact-modal");
+
+  openBtn.addEventListener("click", () => {
+    modal.classList.remove("hidden");
+    modal.classList.add("flex");
+  });
+
+  closeBtn.addEventListener("click", () => {
+    modal.classList.add("hidden");
+    modal.classList.remove("flex");
+  });
+
+  // Close when clicking outside modal
+  modal.addEventListener("click", (e) => {
+    if (e.target === modal) {
+      modal.classList.add("hidden");
+      modal.classList.remove("flex");
+    }
+  });
+</script>
+<style>
+  input textarea {
+    background-color: bg-[#1414149c];
+    box-shadow: inset;
+    text-color: var(--white);
+    @apply border border-[var(--white-icon-tr)] rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--aw-color-secondary)];
+  }
+</style>

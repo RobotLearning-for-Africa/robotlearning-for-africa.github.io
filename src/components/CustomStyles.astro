@@ -1,5 +1,7 @@
 ---
-import '@fontsource-variable/inter';
+import '@fontsource-variable/inter';// Supports weights 200-1000 in a single small file.
+import "@fontsource-variable/nunito-sans";// Supports weights 100-900
+import '@fontsource-variable/montserrat';
 
 // 'DM Sans'
 // Nunito
@@ -20,14 +22,11 @@ import '@fontsource-variable/inter';
 ---
 
 <style is:inline>
-  :root {
-    --aw-font-sans: 'Inter Variable';
-    --aw-font-serif: 'Inter Variable';
-    --aw-font-heading: 'Inter Variable';
 
+  :root {
     --aw-color-primary: rgb(1 97 239);
     --aw-color-secondary: rgb(1 84 207);
-    --aw-color-accent: rgb(109 40 217);
+    --aw-color-accent: rgb(103, 237, 190);
 
     --aw-color-text-heading: rgb(0 0 0);
     --aw-color-text-default: rgb(16 16 16);
@@ -36,28 +35,73 @@ import '@fontsource-variable/inter';
 
     --aw-color-bg-page-dark: rgb(3 6 32);
 
-    ::selection {
-      background-color: lavender;
-    }
+    ;
   }
 
   .dark {
-    --aw-font-sans: 'Inter Variable';
-    --aw-font-serif: 'Inter Variable';
-    --aw-font-heading: 'Inter Variable';
-
-    --aw-color-primary: rgb(1 97 239);
-    --aw-color-secondary: rgb(1 84 207);
-    --aw-color-accent: rgb(109 40 217);
+    --aw-color-primary: #1414149c;
+    --aw-color-secondary: #3a9af4;
+    --aw-color-accent: rgb(103, 237, 190);
 
     --aw-color-text-heading: rgb(247, 248, 248);
     --aw-color-text-default: rgb(229 236 246);
     --aw-color-text-muted: rgb(229 236 246 / 66%);
-    --aw-color-bg-page: rgb(3 6 32);
+    --aw-color-bg-page: #101010;
 
-    ::selection {
-      background-color: black;
-      color: snow;
-    }
+    --border-color: #e5e7eb;
+    --aw-border-primary: #e5e7eb;
+    --button-bg: #1414149c;
+  }
+
+  * {
+    font-family:
+      "Montserrat Variable",
+      -apple-system,
+      system-ui,
+      sans-serif;
+
+    --aw-font-sans: "Montserrat Variable";
+    --aw-font-serif: "Montserrat Variable";
+    --aw-font-heading: "Montserrat Variable";
+
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+  }
+
+  .btn-primary:is(.dark *) {
+    background-color: var(--button-bg);
+    border-color: var(--border-color);
+  }
+
+  *::selection {
+    background-color: var(--sec);
+    color: var(--background);
+  }
+
+  /* Scrollbar styles */
+
+  ::-webkit-scrollbar {
+    width: 15px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: var(--container);
+    border-radius: 30px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: var(--background);
+    border-radius: 10px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--pink);
+  }
+
+  /* Scrollbar styles for Firefox */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: var(--line) var(--container);
   }
 </style>

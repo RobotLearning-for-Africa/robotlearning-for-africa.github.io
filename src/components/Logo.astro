@@ -1,9 +1,40 @@
 ---
-import { SITE } from 'astrowind:config';
+import type { HTMLAttributes } from 'astro/types';
+interface Props {
+  color?: string;
+  size?: string;
+}
+
+const { color = 'currentcolor', size } = Astro.props;
+
+const attrs: HTMLAttributes<'svg'> = {};
+if (size) attrs.style = { '--size': size };
 ---
 
-<span
-  class="self-center ml-2 rtl:ml-0 rtl:mr-2 text-2xl md:text-xl font-bold text-gray-900 whitespace-nowrap dark:text-white"
->
-  🚀 {SITE?.name}
-</span>
+<svg width="400" height="140" viewBox="0 0 200 140" xmlns="http://www.w3.org/2000/svg" stroke={color} fill={color}
+	{...attrs}>
+  <style>
+    .stroke {
+      stroke-width: 18;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      fill: none;
+    }
+    .text {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 92px;
+      font-weight: 800;
+    }
+  </style>
+  <!-- Merged A/K with softened diagonal curve -->
+  <path class="stroke" d="M40 100 L70 25 Q75 35 100 100 M70 60 Q105 40 140 25 L140 100"></path>
+  <text x="170" y="100" class="text">ILI</text>
+</svg>
+
+<style>
+  svg {
+    vertical-align: middle;
+    width: var(--size, 6em);
+    height: var(--size, 2em);
+  }
+</style>
