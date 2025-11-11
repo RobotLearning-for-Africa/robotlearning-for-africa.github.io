@@ -11,7 +11,7 @@ metadata:
   title:
     default: Akili Robotics
     template: '%s — Akili Robotics'
-  description: "Akili Robotics is an international robotics competition hosted in Africa, bringing together students, researchers, and industry professionals to innovate and showcase cutting-edge robotic technologies."
+  description: "Akili Robotics is an organisation connecting roboticists across Africa."
   robots:
     index: true
     follow: true
