@@ -1,0 +1,84 @@
+---
+// SummarySection.astro
+import WidgetWrapper from '~/components/ui/WidgetWrapper.astro';
+import Headline from '~/components/ui/Headline.astro';
+import { Icon } from 'astro-icon/components';
+
+const {
+  title = await Astro.slots.render('title'),
+  subtitle = await Astro.slots.render('subtitle'),
+  tagline,
+  stats = [],
+
+  id,
+  isDark = false,
+  classes = {},
+  bg = await Astro.slots.render('bg'),
+} = Astro.props;
+
+const blurb = `We connect roboticists across Africa to build, learn, and share—together. 
+From hands-on workshops and open tools to research exchanges and industry links, 
+Akili is a hub for people who believe robotics should be accessible, empowering, and world-class.`;
+
+const pillars = [
+  {
+    name: 'Community',
+    points: [
+      'Foster collaborations within Africa and globally',
+      'Connect researchers, students, and industry',
+      'Elevate African voices in global forums',
+    ],
+  },
+  {
+    name: 'Accessibility',
+    points: [
+      'Access to hardware (robots, GPUs, tools)',
+      'Open software + practical resources',
+      'Online seminars that lower barriers',
+    ],
+  },
+  {
+    name: 'Education',
+    points: [
+      'Inspire the next generation',
+      'Upskill beginners with hands-on content',
+      'Enable research visits and exchanges',
+    ],
+  },
+];
+---
+
+<WidgetWrapper id={id} isDark={isDark} containerClass={`max-w-6xl mx-auto ${classes?.container ?? ''}`} bg={bg}>
+  <!-- Pillars -->
+  <div class="grid grid-cols-1 gap-6 md:mt-10 md:grid-cols-3 mx-max-5xl">
+    {
+      pillars.map((p) => (
+        <article class="group rounded-2xl border border-white/10 bg-white/[0.03] p-6 transition hover:border-white/20">
+          <header class="mb-4 flex items-center justify-between">
+            <h3 class="text-xl font-semibold text-white">{p.name}</h3>
+          </header>
+          <ul class="space-y-2 text-slate-300">
+            {p.points.map((pt) => (
+              <li class="flex gap-2">
+                <span class="mt-2 inline-block h-[6px] w-[6px] flex-none rounded-full" style="background:#00D6FF;" />
+                <span>{pt}</span>
+              </li>
+            ))}
+          </ul>
+        </article>
+      ))
+    }
+  </div>
+
+  <p class="mt-12 text-lg md:text-xl leading-relaxed text-slate-300">
+    {blurb}
+  </p>
+
+  <!-- Micro-CTA strip -->
+  <div class="my-8 inline-flex items-center gap-3 rounded-full border border-white/10 bg-white/5 px-4 py-2">
+    <span class="h-2 w-2 rounded-full" style="background:#53F2E8;"></span>
+    <span class="text-sm text-slate-300">
+      Open to students, researchers, labs, and industry partners across the continent.
+    </span>
+  </div>
+</WidgetWrapper>

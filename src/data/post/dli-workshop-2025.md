@@ -1,8 +1,8 @@
 ---
 publishDate: 2025-08-09T00:00:00Z
 title: 3rd Workshop on Robotics at the Deep Learning Indaba 2025
-excerpt: Explore vital tools and resources for a sleek website. From design to functionality, our guide elevates your online presence.
-image: https://images.unsplash.com/photo-1637144113536-9c6e917be447?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1674&q=80
+excerpt: Learn  more about the...
+image: ~/assets/images/Dli2025.JPG
 tags:
   - front-end
   - tools

@@ -1,8 +1,8 @@
 ---
 publishDate: 2023-08-06T00:00:00Z
 title: 2nd Workshop on Robotics at the Deep Learning Indaba 2024
-excerpt: Personalize AstroWind template for your brand. Our guide unlocks seamless customization steps for a unique online presence.
-image: https://images.unsplash.com/photo-1546984575-757f4f7c13cf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80
+excerpt: Learn  more about the...
+image: ~/assets/images/Icra40.jpg
 tags:
   - astro
   - tailwind css

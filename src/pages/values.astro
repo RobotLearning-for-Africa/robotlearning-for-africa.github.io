@@ -1,0 +1,175 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+
+const metadata = {
+  title: 'Values',
+};
+
+const pillars = [
+  {
+    key: 'community',
+    title: 'Community',
+    tagline: 'Connect. Represent. Share.',
+    summary:
+      'Fostering collaborations within Africa and globally, building networks between researchers, students, and industry.',
+    points: [
+      'Fostering collaborations within Africa and with the rest of the world',
+      'Connecting roboticists with industry & academia to create networks',
+      'Improving representation of African roboticists at global forums',
+      'Building platforms for sharing knowledge & opportunities (e.g. Discord)',
+    ],
+    icon: 'network',
+  },
+  {
+    key: 'accessibility',
+    title: 'Accessibility',
+    tagline: 'Open tools. Open doors.',
+    summary:
+      'Lowering barriers to robotics through access to hardware, software, and knowledge.',
+    points: [
+      'Improving access to hardware (robots, GPUs, etc.)',
+      'Improving access to software (open stacks & reproducible setups)',
+      'Improving access to knowledge (online seminars over costly travel)',
+    ],
+    icon: 'chip',
+  },
+  {
+    key: 'education',
+    title: 'Education',
+    tagline: 'Inspire. Upskill. Exchange.',
+    summary:
+      'Inspiring the next generation and upskilling beginners through workshops and research exchanges.',
+    points: [
+      'Inspiring younger generations via school outreach',
+      'Upskilling beginners with practical workshops (e.g. DLI)',
+      'Facilitating academic opportunities & research stays',
+      'Enabling research exchanges across labs in Africa and beyond',
+    ],
+    icon: 'book',
+  },
+];
+
+const brand = {
+  charcoal: '#0D0F11',
+  carbon: '#1A1D20',
+  graphite: '#3B4046',
+  turquoise: '#53F2E8',
+  cyan: '#00D6FF',
+  white: '#F7F8FA',
+};
+---
+
+<Layout metadata={metadata}>
+  <section class="relative min-h-screen bg-[var(--charcoal,#0D0F11)] text-[var(--white,#F7F8FA)]">
+  <!-- Subtle grid / glow background -->
+  <div class="pointer-events-none absolute inset-0 [background:radial-gradient(60%_60%_at_80%_10%,_rgba(83,242,232,0.10),transparent_60%),radial-gradient(50%_40%_at_20%_30%,_rgba(0,214,255,0.10),transparent_60%)] [mask-image:linear-gradient(to_bottom,black,transparent_85%)]"></div>
+  <div class="pointer-events-none absolute inset-0 [background:linear-gradient(to_bottom,transparent,rgba(255,255,255,0.03)_1px),linear-gradient(to_right,transparent,rgba(255,255,255,0.03)_1px)] bg-[length:24px_24px] opacity-40"></div>
+
+  <div class="relative max-w-7xl mx-auto px-4 sm:px-6 py-24">
+    <!-- Header -->
+    <header class="text-center mb-14">
+      <p class="text-sm tracking-[0.22em] uppercase text-[color:rgba(255,255,255,.6)]">Our Pillars</p>
+      <h1 class="mt-3 text-4xl md:text-6xl font-bold tracking-tight">
+        Values that power <span class="relative">
+          Akili Robotics
+          <span class="absolute -inset-1 blur-lg rounded bg-[color:rgba(83,242,232,0.25)] -z-10"></span>
+        </span>
+      </h1>
+      <p class="mt-4 text-lg text-[color:rgba(255,255,255,.75)] max-w-3xl mx-auto">
+        Community, Accessibility, and Education—advancing robotics across Africa through open collaboration and shared opportunity.
+      </p>
+    </header>
+
+    <!-- Pillar Cards -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      {pillars.map((p) => (
+        <article class="group relative rounded-2xl border border-white/10 bg-[color:rgba(255,255,255,0.02)] p-6 md:p-7 transition-shadow hover:shadow-[0_0_0_1px_rgba(83,242,232,.25),0_10px_40px_-10px_rgba(0,0,0,.6)]">
+          <!-- Glow ring -->
+          <div class="absolute -inset-px rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity [background:linear-gradient(180deg,rgba(83,242,232,.25),rgba(0,214,255,.15))] [mask:linear-gradient(#000,#000)_content-box,linear-gradient(#000,#000)] [mask-composite:exclude] p-px"></div>
+
+          <!-- Icon -->
+          <div class="mb-5 flex items-center gap-3">
+            {p.icon === 'network' && (
+              <svg class="h-8 w-8 text-[var(--turquoise,#53F2E8)]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75">
+                <circle cx="5" cy="12" r="2"/><circle cx="12" cy="5" r="2"/><circle cx="12" cy="19" r="2"/><circle cx="19" cy="12" r="2"/>
+                <path d="M7 12h10M12 7v10" />
+              </svg>
+            )}
+            {p.icon === 'chip' && (
+              <svg class="h-8 w-8 text-[var(--turquoise,#53F2E8)]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75">
+                <rect x="7" y="7" width="10" height="10" rx="2"/><path d="M3 9h2M3 15h2M19 9h2M19 15h2M9 3v2M15 3v2M9 19v2M15 19v2"/>
+              </svg>
+            )}
+            {p.icon === 'book' && (
+              <svg class="h-8 w-8 text-[var(--turquoise,#53F2E8)]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75">
+                <path d="M4 5a2 2 0 0 1 2-2h11a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H6a2 2 0 0 1-2-2V5z"/>
+                <path d="M6 6h10M6 10h10M6 14h6"/>
+              </svg>
+            )}
+            <div>
+              <h3 class="text-2xl font-semibold">{p.title}</h3>
+              <p class="text-[color:rgba(255,255,255,.65)] text-sm">{p.tagline}</p>
+            </div>
+          </div>
+
+          <p class="text-[color:rgba(255,255,255,.8)] mb-5">{p.summary}</p>
+          <ul class="space-y-2">
+            {p.points.map((pt) => (
+              <li class="flex gap-2">
+                <span class="mt-2 h-1.5 w-1.5 rounded-full bg-[var(--turquoise,#53F2E8)] shadow-[0_0_12px_rgba(83,242,232,.8)]"></span>
+                <span class="text-[color:rgba(255,255,255,.9)]">{pt}</span>
+              </li>
+            ))}
+          </ul>
+        </article>
+      ))}
+    </div>
+
+    <!-- Divider -->
+    <div class="my-16 h-px w-full bg-gradient-to-r from-transparent via-white/10 to-transparent"></div>
+
+    <!-- Callouts -->
+    <section class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div class="rounded-xl border border-white/10 p-6 bg-white/0">
+        <h4 class="font-semibold text-lg mb-2">Why these pillars?</h4>
+        <p class="text-[color:rgba(255,255,255,.75)]">
+          They’re practical levers for impact: connect people, lower barriers, and grow skills—so research and industry thrive together.
+        </p>
+      </div>
+      <div class="rounded-xl border border-white/10 p-6 bg-white/0">
+        <h4 class="font-semibold text-lg mb-2">How we deliver</h4>
+        <p class="text-[color:rgba(255,255,255,.75)]">
+          Workshops, online seminars, open repos, and cross-lab exchanges—with inclusive participation across the continent.
+        </p>
+      </div>
+      <div class="rounded-xl border border-white/10 p-6 bg-white/0">
+        <h4 class="font-semibold text-lg mb-2">Measuring progress</h4>
+        <p class="text-[color:rgba(255,255,255,.75)]">
+          Track collaborations formed, resources shared, and skills gained; showcase success stories at regional & global venues.
+        </p>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <div class="mt-16 flex flex-col items-center text-center">
+      <a
+        href="/contact"
+        class="inline-flex items-center gap-2 rounded-lg border border-white/15 bg-white/5 px-5 py-3 text-[var(--white,#F7F8FA)] transition hover:border-[color:rgba(83,242,232,.4)] hover:bg-white/[.06] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--turquoise,#53F2E8)]"
+      >
+        Join the community
+        <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M5 12h14M13 5l7 7-7 7"/>
+        </svg>
+      </a>
+      <p class="mt-3 text-sm text-white/70">Collaborate, learn, and build robotics for Africa—together.</p>
+    </div>
+  </div>
+</section>
+</Layout>
+<style>
+  :root {
+  --charcoal: #0D0F11;
+  --turquoise: #53F2E8;
+  --white: #F7F8FA;
+}
+</style>

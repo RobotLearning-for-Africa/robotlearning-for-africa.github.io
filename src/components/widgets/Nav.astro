@@ -141,7 +141,7 @@ const navItems: NavItem[] = navData.links;
 
   document.addEventListener('DOMContentLoaded', () => {
     const sections = document.querySelectorAll('section[id]');
-    const navLinks = document.querySelectorAll("nav a[href^='#']");
+    const navLinks = document.querySelectorAll("nav a[href^='/#']");
     const observerOptions = { threshold: 0.6 };
 
     const observerCallback = (entries) => {
@@ -149,7 +149,7 @@ const navItems: NavItem[] = navData.links;
         if (entry.isIntersecting) {
           navLinks.forEach((link) => link.classList.remove('active'));
           const id = entry.target.getAttribute('id');
-          const activeLink = document.querySelector(`nav a[href="#${id}"]`);
+          const activeLink = document.querySelector(`nav a[href="/#${id}"]`);
           if (activeLink) {
             activeLink.classList.add('active');
           }

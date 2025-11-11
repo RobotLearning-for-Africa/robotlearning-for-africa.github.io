@@ -2,22 +2,26 @@
 import Layout from '~/layouts/PageLayout.astro';
 
 import Header from '~/components/widgets/Header.astro';
-import Note from '~/components/widgets/Note.astro';
-import Features from '~/components/widgets/Features.astro';
-import Features2 from '~/components/widgets/Features2.astro';
-import Steps from '~/components/widgets/Steps.astro';
-import Content from '~/components/widgets/Content.astro';
 import BlogLatestPosts from '~/components/widgets/BlogLatestPosts.astro';
-import FAQs from '~/components/widgets/FAQs.astro';
 import Stats from '~/components/widgets/Stats.astro';
-import CallToAction from '~/components/widgets/CallToAction.astro';
-import Contact from '~/components/widgets/Contact.astro';
 import ContactForm from '~/components/ContactForm.astro';
+import SummarySection from '~/components/widgets/SummarySection.astro';
+import OrganisingCommittee from '~/components/widgets/OrganisingCommittee.astro';
 
 const metadata = {
   title: 'Akili Robotics - Uniting Robotics across Africa',
   ignoreTitleTemplate: true,
 };
+
+const people = [
+  { name: "Ndivhuwo Makondo", role: "General Chair", affiliation: "IBM Research Africa • Wits University", img: "/people/ndivhuwo.png" },
+  { name: "Jenalea Rajab", role: "Treasurer", affiliation: "DEI Projects", img: "/people/jenalea.png" },
+  { name: "Tamlin Love", role: "Academic Partnerships", affiliation: "IRI, CSIC-UPC", img: "/people/tamlin.jpg" },
+  { name: "Geraud Nangue Tasse", role: "Industry Partnerships", affiliation: "University of the Witwatersrand", img: "/people/geraud.png" },
+  { name: "Alexandra Barry", role: "Outreach", affiliation: "Wits University", img: "/people/alexandra.png" },
+  { name: "Sicelukwanda Zwane", role: "Publicity", affiliation: "Kinisi Robotics • UCL", img: "/people/sicelukwanda.png" },
+  { name: "Zukisa Mbuli", role: "Logistics", affiliation: "Wits University", img: "/people/zukisa.png" }
+];
 ---
 
 <Layout metadata={metadata}>
@@ -35,11 +39,81 @@ const metadata = {
     ]}
   />
 
+  <!-- Summary Section *************** -->
+  <SummarySection />
 
-  <!-- HighlightedPosts Widget ******* -->
+  <!-- Recent Events -->
+  <BlogLatestPosts id="events" title="View our recent Events" />
 
-  <BlogLatestPosts title="View our recent Events" />
+  <!-- Affiliations ******* -->
 
+  <section id="affiliation" class="relative py-24 bg-[var(--charcoal,#0D0F11)] justify-center">
+    <div class="relative max-w-6xl mx-auto px-6">
+      <header class="text-center mb-16">
+        <p class="text-sm tracking-[0.22em] uppercase text-white/60">Affiliation</p>
+        <h2 class="mt-2 text-4xl md:text-5xl font-semibold text-white">In Affiliation With</h2>
+      </header>
+
+      <a
+        href="https://www.wits.ac.za/mind/"
+        target="_blank"
+        rel="noopener"
+        class="group block mx-auto max-w-3xl rounded-2xl border border-white/10 bg-white/[0.03] p-8 backdrop-blur
+             transition hover:border-[rgba(83,242,232,0.2)] hover:shadow-[0_0_40px_rgba(83,242,232,0.3)]
+             px-20"
+      >
+        <div class="flex justify-center">
+          <img
+            src="/images/MIND-light.png"
+            alt="WITS MIND Institute Logo"
+            class="h-20 w-auto object-contain group-hover:scale-[1.03] transition-transform"
+          />
+        </div>
+        <p class="mt-6 text-center text-white/70 max-w-lg mx-auto text-lg">
+          The Machine Intelligence & Neuromorphic Devices Research Group at the University of the Witwatersrand,
+          Johannesburg.
+        </p>
+      </a>
+    </div>
+  </section>
+
+  <section id="partners" class="relative py-24 bg-[var(--charcoal,#0D0F11)]">
+    <div class="relative max-w-6xl mx-auto px-6">
+      <header class="text-center mb-16">
+        <p class="text-sm tracking-[0.22em] uppercase text-white/60">Partner Labs</p>
+        <h2 class="mt-2 text-4xl md:text-5xl font-semibold text-white">Collaborating Research Labs</h2>
+        <p class="mt-4 text-white/60 max-w-2xl mx-auto">
+          Strengthening the continent’s robotics ecosystem through shared resources & research exchanges.
+        </p>
+      </header>
+
+      <div class="flex justify-center">
+        <a
+          href="https://www.raillab.org/"
+          target="_blank"
+          rel="noopener"
+          class="group relative h-28 w-28 sm:h-32 sm:w-32 rounded-full
+               bg-white/5 border border-white/10 backdrop-blur-md
+               flex items-center justify-center
+               transition
+               hover:border-[rgba(83,242,232,0.2)]
+               hover:shadow-[0_0_35px_rgba(83,242,232,0.35)]
+               hover:bg-white/[0.08]"
+        >
+          <img
+            src="/images/raillab.png"
+            alt="RAIL Lab Logo"
+            class="h-14 w-14 sm:h-20 sm:w-20 object-contain opacity-85 group-hover:opacity-100 group-hover:scale-[1.07]
+          transition-transform"
+          />
+        </a>
+
+        <!-- Add other partner labs here later -->
+      </div>
+    </div>
+  </section>
+
+  <OrganisingCommittee people={people} />
 
   <!-- Contact Us *********** -->
   <ContactForm />

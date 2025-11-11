@@ -1,31 +1,27 @@
 site:
-  name: AstroWind
-  site: 'https://astrowind.vercel.app'
+  name: Akili Robotics
+  site: 'https://akili-robotics.org'
   base: '/'
   trailingSlash: false
 
-  googleSiteVerificationId: orcPxI47GSa-cRvY11tUe6iGg2IO_RPvnA1q95iEM3M
+  googleSiteVerificationId: 123
 
 # Default SEO metadata
 metadata:
   title:
-    default: AstroWind
-    template: '%s — AstroWind'
-  description: "\U0001F680 Suitable for Startups, Small Business, Sass Websites, Professional Portfolios, Marketing Websites, Landing Pages & Blogs."
+    default: Akili Robotics
+    template: '%s — Akili Robotics'
+  description: "Akili Robotics is an international robotics competition hosted in Africa, bringing together students, researchers, and industry professionals to innovate and showcase cutting-edge robotic technologies."
   robots:
     index: true
     follow: true
   openGraph:
-    site_name: AstroWind
+    site_name: Akili Robotics
     images:
       - url: '~/assets/images/default.png'
         width: 1200
         height: 628
     type: website
-  twitter:
-    handle: '@arthelokyo'
-    site: '@arthelokyo'
-    cardType: summary_large_image
 
 i18n:
   language: en

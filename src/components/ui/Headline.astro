@@ -7,29 +7,38 @@ const {
   subtitle = await Astro.slots.render('subtitle'),
   tagline,
   classes = {},
+  alignment = 'center',
 } = Astro.props;
 
-const {
-  container: containerClass = 'max-w-3xl',
-  title: titleClass = 'text-3xl md:text-4xl ',
-  subtitle: subtitleClass = 'text-xl',
+let {
+  container: containerClass = 'max-w-7xl',
+  title: titleClass = 'text-4xl md:text-6xl ',
+  subtitle: subtitleClass = 'text-lg',
 } = classes;
+
+if (alignment === 'left') {
+  containerClass += ' text-left';
+} else if (alignment === 'right') {
+  containerClass += ' text-right';
+} else {
+  containerClass += ' text-center';
+}
 ---
 
 {
   (title || subtitle || tagline) && (
-    <div class={twMerge('mb-8 md:mx-auto md:mb-12 text-center', containerClass)}>
+    <div class={twMerge('relative mx-auto px-4 sm:px-6 py-24', containerClass)}>
       {tagline && (
-        <p class="text-base text-secondary dark:text-blue-200 font-bold tracking-wide uppercase" set:html={tagline} />
+        <p class="text-sm tracking-[0.22em] uppercase text-[color:rgba(255,255,255,.6)]" set:html={tagline} />
       )}
-      {title && (
-        <h2
-          class={twMerge('font-bold leading-tighter tracking-tighter font-heading text-heading text-3xl', titleClass)}
-          set:html={title}
+      {title && <h1 class={twMerge('mt-3 font-bold tracking-tight', titleClass)} set:html={title} />}
+
+      {subtitle && (
+        <p
+          class={twMerge('mt-4 text-[color:rgba(255,255,255,.75)] max-w-3xl mx-auto', subtitleClass)}
+          set:html={subtitle}
         />
       )}
-
-      {subtitle && <p class={twMerge('mt-4 text-muted', subtitleClass)} set:html={subtitle} />}
     </div>
   )
 }

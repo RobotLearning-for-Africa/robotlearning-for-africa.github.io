@@ -1,0 +1,56 @@
+---
+/** OrganisingCommittee.astro
+ * Props:
+ *  - people: Array<{
+ *      name: string
+ *      role?: string
+ *      affiliation?: string
+ *      img: string // /public path
+ *    }>
+ */
+const { people = [] } = Astro.props;
+---
+
+<section id="organising-committee" class="relative py-16 md:py-24">
+  <div class="relative max-w-7xl mx-auto px-4 sm:px-6">
+    <header class="text-center mb-12 md:mb-16">
+      <p class="text-sm tracking-widest font-semibold text-[var(--sec,_#53F2E8)]/90 uppercase">Organising Committee</p>
+      <h2 class="mt-2 text-3xl md:text-5xl font-bold tracking-tight text-[var(--white,_#F7F8FA)]">The Team</h2>
+      <p class="mt-4 max-w-2xl mx-auto text-[var(--muted,_#c7d0d9)]/80">
+        Building a collaborative, accessible, and education-driven robotics community across Africa.
+      </p>
+    </header>
+
+    <!-- cards -->
+    <ul class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-6 md:gap-8">
+      {people.map((p) => (
+        <li class="group rounded-2xl border border-white/10 bg-white/2 backdrop-blur-sm p-8 relative overflow-hidden">
+          <!-- hover ring -->
+          <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 [background:radial-gradient(400px_150px_at_50%_0%,rgba(83,242,232,.12),transparent)]"></div>
+
+          <div class="flex items-center gap-4">
+            <img
+              src={p.img}
+              alt={p.name}
+              width="150" height="150"
+              class="h-50 w-50 rounded-full object-cover ring-1 ring-white/15"
+              loading="lazy"
+            />
+            <div class="min-w-0">
+              <h3 class="text-lg font-semibold text-white truncate">{p.name}</h3>
+              {p.role ? (
+                <span class="inline-flex items-center mt-1 text-[11px] font-semibold tracking-wide uppercase px-2 py-2 rounded-full
+                              bg-[rgba(83,242,232,.12)] ">
+                  {p.role}
+                </span>
+              ) : null}
+              {p.affiliation ? (
+                <p class="mt-2 text-sm text-white/70">{p.affiliation}</p>
+              ) : null}
+            </div>
+          </div>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>

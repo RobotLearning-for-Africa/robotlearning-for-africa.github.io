@@ -2,9 +2,6 @@
 import Layout from '~/layouts/Layout.astro';
 import Nav from '~/components/widgets/Nav.astro';
 import Footer from '~/components/widgets/Footer.astro';
-import FloatingMenu from '~/components/ui/FloatingMenu.astro';
-
-import { navData, footerData } from '~/navigation';
 
 import type { MetaData } from '~/types';
 
@@ -18,19 +15,25 @@ const { metadata } = Astro.props;
 <Layout metadata={metadata}>
   <slot name="header">
     <Nav />
-    <FloatingMenu
+    <!-- <FloatingMenu
       items={[
         { label: 'Akili Robotics', href: '/' },
         { label: 'Outreach', href: '/outreach' },
         { label: 'Partners', href: '/partners' },
         { label: 'Join Us', href: '/join' },
       ]}
-    />
+    /> -->
   </slot>
   <main>
     <slot />
   </main>
   <slot name="footer">
-    <Footer {...footerData} />
+    <Footer
+      links={[
+        { href: '/about', label: 'About' },
+        { href: '/events', label: 'Events' },
+        { href: '/contact', label: 'Contact' },
+      ]}
+    />
   </slot>
 </Layout>

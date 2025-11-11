@@ -1,8 +1,11 @@
 ---
 import Layout from '~/layouts/PageLayout.astro';
-import HeroText from '~/components/widgets/HeroText.astro';
-import ContactUs from '~/components/widgets/Contact.astro';
-import Features2 from '~/components/widgets/Features2.astro';
+import { Mail, User, MessageCircle } from '@lucide/astro';
+import Headline from '~/components/ui/Headline.astro';
+const title = 'Contact Akili Robotics';
+const description = 'Get in touch with Akili Robotics — community, collaboration, and education in African robotics.';
+// Formspree example endpoint — replace with your own:
+const FORMSPREE_ENDPOINT = 'https://formspree.io/f/mnnjznkj';
 
 const metadata = {
   title: 'Contact',
@@ -10,34 +13,156 @@ const metadata = {
 ---
 
 <Layout metadata={metadata}>
-  <!-- HeroText Widget ******************* -->
-
-  <HeroText tagline="Contact" title="Let's Connect!" />
-
-  <ContactUs
-    id="form"
-    title="Drop us a message today!"
-    subtitle="For quicker answers, explore our FAQs section. You may find the solution you're looking  for right there! If not, our support team is delighted to help you."
-    inputs={[
-      {
-        type: 'text',
-        name: 'name',
-        label: 'Name',
-      },
-      {
-        type: 'email',
-        name: 'email',
-        label: 'Email',
-      },
-    ]}
-    textarea={{
-      label: 'Message',
+  <Headline
+    title="Contact Akili Robotics"
+    subtitle="We’d love to hear from you about collaborations, community initiatives, workshops, or general questions."
+    tagline="Get in touch"
+    classes={{
+      container: 'max-w-3xl pb-0 pt-30',
     }}
-    disclaimer={{
-      label:
-        'By submitting this contact form, you acknowledge and agree to the collection of your personal information.',
-    }}
-    description="Our support team typically responds within 24 business hours."
+    alignment="left"
   />
 
+  <!-- Content -->
+  <section class="relative mx-auto max-w-3xl px-4 sm:px-6 pt-16 pb-20 justify-center">
+    <div class="flex flex-col">
+      <div class="justify-center">
+        <form
+          id="contact-form"
+          action={FORMSPREE_ENDPOINT}
+          method="POST"
+          class="relative rounded-2xl border border-white/10 bg-[var(--charcoal-2)]/60 p-6 md:p-8 backdrop-blur"
+        >
+          <!-- subtle inner glow border -->
+          <div class="pointer-events-none absolute inset-0 rounded-2xl ring-1 ring-inset ring-white/5"></div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <label class="group">
+              <span class="mb-2 flex items-center gap-2 text-sm text-white/70">
+                <User class="h-4 w-4" /> Name
+              </span>
+              <input
+                type="text"
+                name="from_name"
+                required
+                autocomplete="name"
+                class="w-full rounded-lg bg-[#141414]/70 border border-white/10 px-4 py-3 text-[var(--white)] outline-none ring-0 focus:border-[var(--turq)] focus:ring-2 focus:ring-[var(--turq)]/30 transition"
+                placeholder="Your name"
+              />
+            </label>
+
+            <label class="group">
+              <span class="mb-2 flex items-center gap-2 text-sm text-white/70">
+                <Mail class="h-4 w-4" /> Email
+              </span>
+              <input
+                type="email"
+                name="reply_to"
+                required
+                autocomplete="email"
+                class="w-full rounded-lg bg-[#141414]/70 border border-white/10 px-4 py-3 text-[var(--white)] outline-none ring-0 focus:border-[var(--turq)] focus:ring-2 focus:ring-[var(--turq)]/30 transition"
+                placeholder="name@example.com"
+              />
+            </label>
+          </div>
+
+          <label class="group mt-4 block">
+            <span class="mb-2 flex items-center gap-2 text-sm text-white/70">
+              <MessageCircle class="h-4 w-4" /> Message
+            </span>
+            <textarea
+              name="message"
+              rows="6"
+              required
+              class="w-full rounded-lg bg-[#141414]/70 border border-white/10 px-4 py-3 text-[var(--white)] outline-none ring-0 focus:border-[var(--turq)] focus:ring-2 focus:ring-[var(--turq)]/30 transition resize-y"
+              placeholder="Tell us about your idea, collab, or question…"></textarea>
+          </label>
+
+          <!-- Honeypot -->
+          <input type="text" name="website" class="hidden" tabindex="-1" autocomplete="off" />
+
+          <!-- Submit -->
+          <div class="mt-6 flex items-center gap-3">
+            <button
+              type="submit"
+              class="inline-flex items-center justify-center rounded-lg border border-white/10 bg-white/5 px-5 py-3 text-sm font-semibold text-[var(--white)] transition hover:border-white/20 hover:bg-white/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--turq)]"
+            >
+              Send message
+            </button>
+
+            <span id="form-status" class="text-sm text-white/60"></span>
+          </div>
+
+          <!-- Success panel (hidden by default) -->
+          <div
+            id="form-success"
+            class="mt-6 hidden rounded-lg border border-emerald-500/30 bg-emerald-500/10 p-4 text-emerald-200"
+          >
+            ✅ Thanks! Your message was sent. We’ll be in touch soon.
+          </div>
+
+          <!-- Error panel (hidden by default) -->
+          <div
+            id="form-error"
+            class="mt-6 hidden rounded-lg border border-rose-500/30 bg-rose-500/10 p-4 text-rose-200"
+          >
+            ❌ Hmm, something went wrong. Please try again or email us directly.
+          </div>
+        </form>
+
+        <p class="mt-4 text-xs text-white/50">
+          By submitting, you agree to our privacy policy and consent to being contacted about your message.
+        </p>
+      </div>
+    </div>
+  </section>
 </Layout>
+<!-- Progressive enhancement: async submit -->
+<script is:inline>
+  (function () {
+    const form = document.getElementById('contact-form');
+    const successEl = document.getElementById('form-success');
+    const errorEl = document.getElementById('form-error');
+    const statusEl = document.getElementById('form-status');
+    if (!form) return;
+
+    form.addEventListener('submit', async (e) => {
+      // If JS fails or is disabled, the native POST still works
+      e.preventDefault();
+      statusEl.textContent = 'Sending…';
+      errorEl.classList.add('hidden');
+      successEl.classList.add('hidden');
+
+      const data = new FormData(form);
+      // basic honeypot check
+      if (data.get('website')) {
+        statusEl.textContent = '';
+        successEl.classList.remove('hidden');
+        form.reset();
+        form.querySelectorAll('input, textarea, button').forEach((el) => (el.disabled = true));
+        return;
+      }
+
+      try {
+        const res = await fetch(form.action, {
+          method: 'POST',
+          headers: { Accept: 'application/json' },
+          body: data,
+        });
+
+        statusEl.textContent = '';
+        if (res.ok) {
+          successEl.classList.remove('hidden');
+          form.reset();
+        } else {
+          errorEl.classList.remove('hidden');
+          console.error('Form error:', await res.text());
+        }
+      } catch (err) {
+        statusEl.textContent = '';
+        errorEl.classList.remove('hidden');
+        console.error('Network error:', err);
+      }
+    });
+  })();
+</script>
